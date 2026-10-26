@@ -1,0 +1,106 @@
+.confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: confirm-fade-in 0.15s ease-out;
+}
+
+.confirm-sheet {
+  width: 300px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family);
+  overflow: hidden;
+  animation: confirm-pop-in 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.confirm-sheet__body {
+  padding: 22px 20px 18px;
+  text-align: center;
+}
+
+.confirm-sheet__title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.confirm-sheet__message {
+  margin: 0;
+  font-size: var(--font-xs);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.confirm-sheet__actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.confirm-sheet__btn {
+  flex: 1;
+  border-radius: var(--radius-pill);
+  padding: 10px 8px;
+  font-size: var(--font-md);
+  font-family: var(--font-family);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-base), box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+/* Cancel — matches dashboard__new-btn--cancel */
+.confirm-sheet__btn:first-child {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.confirm-sheet__btn:first-child:hover {
+  background: var(--color-surface-alt);
+}
+
+/* Primary / Delete — matches dashboard__submit-btn, red for destructive */
+.confirm-sheet__btn--primary {
+  border: none;
+  background: var(--color-accent);
+  color: var(--color-primary-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.confirm-sheet__btn--primary:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.confirm-sheet__btn--destructive {
+  background: var(--color-error);
+  color: #fff;
+}
+
+.confirm-sheet__btn--destructive:hover {
+  background: var(--color-error);
+  filter: brightness(0.92);
+}
+
+@keyframes confirm-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes confirm-pop-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
